@@ -17,8 +17,8 @@ public class Pokeball {
         System.out.println("Zyskiwanie pokeballi");
         System.out.println();
         System.out.println("Jakiego pokeballa chcesz wybrać?");
-        System.out.println("1 - Standard (50)");
-        System.out.println("2 - GreenBall (80)");
+        System.out.println("1 - Standard (50% szans na złapanie)");
+        System.out.println("2 - GreenBall (80% szans na złapanie)");
 
         String pokeballType = input.next();
 

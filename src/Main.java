@@ -1,6 +1,7 @@
 import java.util.Scanner;
 
 import pokemony.Pokemon;
+import pokemony.Trener;
 
 public class Main {
 
@@ -24,7 +25,8 @@ public class Main {
             System.out.println("3 - Zbierz pokeballa");
             System.out.println("4 - Złap pokemona");
             System.out.println("5 - Walcz");
-            System.out.println("6 - Wyjdź");
+            System.out.println("6 - Sprawdź statystyki");
+            System.out.println("7 - Wyjdź");
 
             System.out.print("> ");
             String fromUser = input.next();
@@ -43,9 +45,13 @@ public class Main {
                     Pokemon.getPokemon();
                     break;
                 case "5":
-                    Oponent.chooseYourPokemon();
+                    Oponent.chooseYourPokemon(trener);
                     break;
                 case "6":
+                    System.out.println("Wygranych: " + trener.getWins());
+                    System.out.println("Przegranych: " + trener.getLost());
+                    break;
+                case "7":
                     System.exit(0);
             }
         }

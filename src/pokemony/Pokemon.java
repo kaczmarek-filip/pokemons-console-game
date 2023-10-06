@@ -1,4 +1,5 @@
 package pokemony;
+import com.sun.tools.javac.Main;
 import pokeball.GreenBall;
 import pokeball.Pokeball;
 import pokeball.StandardBall;
@@ -9,9 +10,9 @@ public class Pokemon{
 
     public double HP = 100;
     public double attack = 10;
-    static int normalNumber = 0;
-    static int groundNumber = 0;
-    static int flyingNumber = 0;
+    public static int normalNumber = 0;
+    public static int groundNumber = 0;
+    public static int flyingNumber = 0;
     static Scanner input = new Scanner(System.in);
 
     public Pokemon(){
@@ -105,7 +106,7 @@ public class Pokemon{
         return pokemonType;
     }
 
-    public void fight() {
+    public void fight(Trener trener) {
         Random rand = new Random();
 
         int oponentHP = rand.nextInt(300);
@@ -118,15 +119,18 @@ public class Pokemon{
         System.out.println("Przeciwnik ma: ");
         System.out.println("HP: " + oponentHP);
         System.out.println("Atak: " + oponentAttack);
+        System.out.println();
+        System.out.println("Wpisz dowolny znak by rozpocząć walkę ");
+        String enterBattle = input.next();
 
-        while (oponentHP >= 0 && this.HP >= 0){
+        while (oponentHP > 0 && this.HP > 0){
 
             int myAttackOnce = rand.nextInt((int) this.attack);
             System.out.println("[ Atakujesz ] + " + myAttackOnce);
             oponentHP -= myAttackOnce;
 
             try {
-                Thread.sleep(1000); // Opóźnienie na około jedną sekundę (1000 milisekund)
+                Thread.sleep(1000);
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
@@ -136,7 +140,7 @@ public class Pokemon{
             this.HP -= oponentAttackOnce;
 
             try {
-                Thread.sleep(1000); // Opóźnienie na około jedną sekundę (1000 milisekund)
+                Thread.sleep(1000);
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
@@ -146,13 +150,14 @@ public class Pokemon{
                 System.out.println("! Wygrałeś !");
                 System.out.println();
 
-                //TODO: Dodać punktację trenerów
+                trener.setWins(1);
+
             } else if (this.HP <= 0) {
                 System.out.println();
                 System.out.println("! Przegrałeś !");
                 System.out.println();
 
-                //TODO: Odjąć straconego pokemona i dodać warunek sprawdzający czy gracz dysponuje pokemonami
+                trener.setLost(1);
             }
 
             System.out.println(" - Życie: " + this.HP);
