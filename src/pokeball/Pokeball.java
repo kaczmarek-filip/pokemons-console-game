@@ -13,10 +13,6 @@ public class Pokeball {
     public Pokeball(){
         fortune = 50;
     }
-
-    public double getFortune() {
-        return fortune;
-    }
     public static void addPokeball(){
         System.out.println("Zyskiwanie pokeballi");
         System.out.println();

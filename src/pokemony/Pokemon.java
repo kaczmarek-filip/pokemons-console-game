@@ -3,15 +3,21 @@ import pokeball.GreenBall;
 import pokeball.Pokeball;
 import pokeball.StandardBall;
 
+import java.util.Random;
 import java.util.Scanner;
 public class Pokemon{
 
-    double HP = 100;
-    double attack = 10;
+    public double HP = 100;
+    public double attack = 10;
     static int normalNumber = 0;
     static int groundNumber = 0;
     static int flyingNumber = 0;
     static Scanner input = new Scanner(System.in);
+
+    public Pokemon(){
+        this.HP = HP;
+        this.attack = attack;
+    }
 
     static public void getPokemon(){
         System.out.println("Łapanie pokemonów");
@@ -30,16 +36,10 @@ public class Pokemon{
 
         } else if (pokemonType.equals("2")) {
 
-//            Pokemon ground = new Ground();
-//            groundNumber += 1;
-//            CatchPokemon(groundNumber);
             groundNumber = CatchPokemon(groundNumber);
 
         } else if (pokemonType.equals("3")) {
 
-//            Pokemon flying = new Flying();
-//            flyingNumber += 1;
-//            CatchPokemon(flyingNumber);
             flyingNumber = CatchPokemon(flyingNumber);
 
         }
@@ -103,5 +103,60 @@ public class Pokemon{
 
         }
         return pokemonType;
+    }
+
+    public void fight() {
+        Random rand = new Random();
+
+        int oponentHP = rand.nextInt(300);
+        int oponentAttack = rand.nextInt(10, 30);
+
+        System.out.println("Twój pokemon ma: ");
+        System.out.println("HP: " + this.HP);
+        System.out.println("Atak: " + this.attack);
+        System.out.println();
+        System.out.println("Przeciwnik ma: ");
+        System.out.println("HP: " + oponentHP);
+        System.out.println("Atak: " + oponentAttack);
+
+        while (oponentHP >= 0 && this.HP >= 0){
+
+            int myAttackOnce = rand.nextInt((int) this.attack);
+            System.out.println("[ Atakujesz ] + " + myAttackOnce);
+            oponentHP -= myAttackOnce;
+
+            try {
+                Thread.sleep(1000); // Opóźnienie na około jedną sekundę (1000 milisekund)
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+
+            int oponentAttackOnce = rand.nextInt(oponentAttack);
+            System.out.println("[ Otrzymujesz ] - " + oponentAttackOnce);
+            this.HP -= oponentAttackOnce;
+
+            try {
+                Thread.sleep(1000); // Opóźnienie na około jedną sekundę (1000 milisekund)
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+
+            if (oponentHP <= 0){
+                System.out.println();
+                System.out.println("! Wygrałeś !");
+                System.out.println();
+
+                //TODO: Dodać punktację trenerów
+            } else if (this.HP <= 0) {
+                System.out.println();
+                System.out.println("! Przegrałeś !");
+                System.out.println();
+
+                //TODO: Odjąć straconego pokemona i dodać warunek sprawdzający czy gracz dysponuje pokemonami
+            }
+
+            System.out.println(" - Życie: " + this.HP);
+
+        }
     }
 }

@@ -9,7 +9,6 @@ public class StandardBall extends Pokeball{
     }
 
     public static boolean tryFatch(){
-//        System.out.println(fortune);
 
         Random random = new Random();
         double isCotch = random.nextDouble() * 100.0;

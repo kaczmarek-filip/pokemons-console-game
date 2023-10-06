@@ -12,19 +12,4 @@ public class Trener extends Pokeball{
         this.pokemonNumber = pokemonNumber;
         this.pokeballNumber = pokeballNumber;
     }
-
-    public int getPokemonNumber() {
-        return this.pokemonNumber;
-    }
-    public int getPokeballNumber(){
-        return this.pokeballNumber;
-    }
-
-    public void addPokeballNumber(int pokeballNumber) {
-        this.pokeballNumber += pokeballNumber;
-    }
-
-    public void checkPokeballs(){
-        System.out.println("Dostępne pokeballe:");
-    }
 }

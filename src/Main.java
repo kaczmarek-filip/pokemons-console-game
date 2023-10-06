@@ -16,8 +16,6 @@ public class Main {
 
 
         while (true){
-//            System.out.println("Twoja liczba pokemonów: " + trener.getPokemonNumber());
-//            System.out.println("Twoja liczba pokeballi: " + trener.getPokeballNumber());
             System.out.println();
 
             System.out.println("Wybierz działanie:");
@@ -26,8 +24,9 @@ public class Main {
             System.out.println("3 - Zbierz pokeballa");
             System.out.println("4 - Złap pokemona");
             System.out.println("5 - Walcz");
-            System.out.println("X - Wyjdź");
+            System.out.println("6 - Wyjdź");
 
+            System.out.print("> ");
             String fromUser = input.next();
 
             switch (fromUser){
@@ -38,15 +37,16 @@ public class Main {
                     Pokemon.showPokemons();
                     break;
                 case "3":
-//                    Pokeball pokeball = new GreenBall();
-//                    trener.addPokeballNumber(1);
                     trener.addPokeball();
                     break;
                 case "4":
-//                    Pokemon pokemon = new Pokemon();
                     Pokemon.getPokemon();
                     break;
-
+                case "5":
+                    Oponent.chooseYourPokemon();
+                    break;
+                case "6":
+                    System.exit(0);
             }
         }
 
